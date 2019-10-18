@@ -5,22 +5,37 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import {AppProvider, Page, Card, Button, Thumbnail} from '@shopify/polaris';
+import enTranslations from '@shopify/polaris/locales/en.json';
+// import {AppProvider, Page, Card, Button} from '@shopify/polaris';
 
 const Hello = props => (
-  <div>Hello {props.name}!</div>
+    <AppProvider i18n={enTranslations}>
+        <Page title="Products">
+          {props.products.map((product, index) => (
+              <Card key={index}
+                    title={product.title}
+                    primaryFooterAction={{
+                      content: 'View',
+                      url: 'https://${shop_session.url}/admin/products/${product.id}',
+                    }}
+                    sectioned
+              >
+                <Thumbnail
+                    source={product.images[0].src}
+                    alt={product.title}
+                    size="large"
+                />
+
+              </Card>
+          ))}
+        </Page>
+    </AppProvider>
 )
 
-Hello.defaultProps = {
-  name: 'David'
-}
-
-Hello.propTypes = {
-  name: PropTypes.string
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  ReactDOM.render(
-    <Hello name="React" />,
-    document.body.appendChild(document.createElement('div')),
-  )
-})
+// Render component with data
+// document.addEventListener('DOMContentLoaded', () => {
+//   const node = document.getElementById('hello-react')
+//   const data = JSON.parse(node.getAttribute('data'))
+//   ReactDOM.render(<Hello {...data} />, node)
+// })
