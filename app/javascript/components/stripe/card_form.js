@@ -1,5 +1,5 @@
 import React from "react";
-import {Button, Form, FormLayout} from "@shopify/polaris";
+import {Button, FormLayout, Stack, TextStyle, Thumbnail} from "@shopify/polaris";
 import PropTypes from "prop-types";
 import {
     CardCVCElement,
@@ -16,21 +16,32 @@ class CardForm extends React.Component {
 
     componentDidMount() {
         const {checkout} = this.context;
-        console.log("++++self", checkout);
-        // this.onOriginSubmit = checkout.onSubmit;
         checkout.onSubmit = this.onSubmit;
     }
 
     render() {
         return (
             <FormLayout>
-                <CardNumberElement
-                />
+                <Stack>
+                    <Stack.Item fill>
+                        <TextStyle variation="strong">
+                            Credit Card
+                        </TextStyle>
+                    </Stack.Item>
+                    <Stack.Item fill>
+                        <Thumbnail size="small" source="/assets/card_visa.png" />
+                    </Stack.Item>
+                    <Stack.Item>
+                        <Thumbnail size="small" source="/assets/card_mastercard.png" />
+                    </Stack.Item>
+                    <Stack.Item>
+                        <Thumbnail size="small" source="/assets/card_amex.png" />
+                    </Stack.Item>
+                </Stack>
+                <CardNumberElement />
                 <FormLayout.Group>
-                    <CardExpiryElement
-                    />
-                    <CardCVCElement
-                    />
+                    <CardExpiryElement />
+                    <CardCVCElement />
                 </FormLayout.Group>
                 <Button primary submit>Complete Purchase</Button>
             </FormLayout>

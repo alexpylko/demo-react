@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+
+.Polaris-Badge {
+    position: absolute;
+    left: 10px;
+    top: 0px;
+}
+
+.Polaris-Thumbnail--sizeSmall {
+    height: 26px;
+}

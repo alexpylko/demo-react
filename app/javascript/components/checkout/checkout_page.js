@@ -1,10 +1,11 @@
 import React from "react";
 import { Layout, Page, Card, Form } from "@shopify/polaris";
 import PropTypes from "prop-types";
-import DefaultProvider, * as Providers from "./providers"
+import DefaultProvider, * as Providers from "../providers"
 import AddressView from "./address_view";
+import OrderList from "./order_list";
 
-export default class Checkout extends React.Component {
+export default class CheckoutPage extends React.Component {
 
     static childContextTypes = {
         checkout: PropTypes.object
@@ -15,7 +16,7 @@ export default class Checkout extends React.Component {
     };
 
     render() {
-        const {provider, ...props} = this.props;
+        const {products, provider, ...props} = this.props;
         const CardView = Providers[provider] || DefaultProvider;
 
         return (
@@ -28,6 +29,9 @@ export default class Checkout extends React.Component {
                             </Card>
                         </Layout.Section>
                         <Layout.Section secondary>
+                            <Card title="Order Summary" sectioned>
+                                <OrderList products={products} />
+                            </Card>
                             <Card title="Payment Method" sectioned>
                                 <CardView />
                             </Card>
