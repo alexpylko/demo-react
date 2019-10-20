@@ -6,6 +6,8 @@
     "@rails/webpacker": "^4.0.7",
     "@shopify/polaris": "^4.6.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "form-serializer": "^2.5.0",
+    "jquery": "^3.4.1",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",

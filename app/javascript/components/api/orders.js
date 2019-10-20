@@ -8,7 +8,14 @@ function requestEvents(params, options) {
 
     return {
         [CALL_API]: {
-            ...options
+            ...options,
+            options: {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json; charset=utf-8"
+                },
+                body: JSON.stringify(params)
+            }
         }
     };
 }

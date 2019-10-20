@@ -18,5 +18,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-
 export default connect(makeMapStateToProps, mapDispatchToProps)(CheckoutView);

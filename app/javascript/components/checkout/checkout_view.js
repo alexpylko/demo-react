@@ -51,11 +51,10 @@ export default class CheckoutView extends React.Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        this.onSave();
     };
 
-    onSave = (options = {}) => {
-        this.props.makeOrder(options);
+    makeOrder = (params = {}) => {
+        this.props.makeOrder(params);
     };
 
 }

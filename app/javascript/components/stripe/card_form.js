@@ -16,7 +16,7 @@ class CardForm extends React.Component {
 
     componentDidMount() {
         const {checkout} = this.context;
-        // checkout.onSubmit = this.onSubmit;
+        checkout.onSubmit = this.onSubmit;
     }
 
     render() {
@@ -48,9 +48,27 @@ class CardForm extends React.Component {
         );
     }
 
-    onSubmit = e => {
+    onSubmit = async (e) => {
         e.preventDefault();
-        this.createSource();
+        const {target} = e;
+        const {checkout} = this.context;
+        try {
+            // const stripe = await this.createSource();
+            const stripe = {id: "src_1FVaizKMEauxsMPf6CS5Ap1g", cc_exp_month: 12, cc_exp_year: 2024, cc_last4: "4242", cc_brand: "Visa"};
+            const attributes = $(target).serializeObject();
+            checkout.makeOrder({
+                type: "Stripe",
+                data: {
+                    attributes: {
+                        ...attributes,
+                        ...stripe
+                    }
+                }
+            });
+        }
+        catch(e) {
+            console.log("++++error", e);
+        }
     };
 
     async createSource() {
@@ -62,6 +80,8 @@ class CardForm extends React.Component {
 
         try {
             const response = await stripe.createSource(options);
+            console.log("Stripe: ", response);
+
             const {source: {
                 id: source,
                 last4: cc_last4,
@@ -69,7 +89,8 @@ class CardForm extends React.Component {
                 exp_year: cc_exp_year,
                 brand: cc_brand
             }} = response;
-            console.log("++++response", response);
+
+            return { source, cc_last4, cc_exp_month, cc_exp_year, cc_brand };
         }
         catch(e) {
             console.log("++++error", e);
