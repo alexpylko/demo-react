@@ -4,7 +4,7 @@ import CardForm from "./card_form";
 
 const CardView = (props) => {
     return (
-        <StripeProvider apiKey="pk_test_54i9EAyGeyz3ZcTKYHkzvNW400j6W55iEd">
+        <StripeProvider apiKey={STRIPE_API_KEY}>
             <Elements>
                 <CardForm {...props} />
             </Elements>
