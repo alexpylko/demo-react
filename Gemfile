@@ -17,7 +17,9 @@ gem 'uglifier', '>= 1.3.0'
 gem 'webpacker'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
-#
+
+gem 'versionist'
+gem 'stripe'
 
 # Shopify stuff
 gem 'shopify_app'

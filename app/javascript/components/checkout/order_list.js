@@ -12,9 +12,13 @@ export default class OrderList extends React.Component {
                     items={products}
                     renderItem={OrderItem}
                 />
-                <Stack>
-                    <Stack.Item fill>Total</Stack.Item>
-                    <Stack.Item fill>1</Stack.Item>
+                <Stack >
+                    <Stack.Item fill>
+                        <div className="card__total">Total</div>
+                    </Stack.Item>
+                    <Stack.Item fill>
+                        <div className="card__amount">PLN 150</div>
+                    </Stack.Item>
                 </Stack>
             </div>
         );

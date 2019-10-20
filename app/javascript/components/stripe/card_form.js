@@ -28,7 +28,7 @@ class CardForm extends React.Component {
                             Credit Card
                         </TextStyle>
                     </Stack.Item>
-                    <Stack.Item fill>
+                    <Stack.Item >
                         <Thumbnail size="small" source="/assets/card_visa.png" />
                     </Stack.Item>
                     <Stack.Item>
@@ -38,12 +38,14 @@ class CardForm extends React.Component {
                         <Thumbnail size="small" source="/assets/card_amex.png" />
                     </Stack.Item>
                 </Stack>
-                <CardNumberElement />
-                <FormLayout.Group>
-                    <CardExpiryElement />
-                    <CardCVCElement />
+                <CardNumberElement className="card-form__input"/>
+                <FormLayout.Group >
+                    <div className="card-form__data">
+                        <CardExpiryElement className="card-form__input"/>
+                        <CardCVCElement className="card-form__input"/>
+                    </div>
                 </FormLayout.Group>
-                <Button primary submit>Complete Purchase</Button>
+                <div className="card-form__btn"><Button primary submit>Complete Purchase</Button></div>
             </FormLayout>
         );
     }
@@ -53,9 +55,9 @@ class CardForm extends React.Component {
         const {target} = e;
         const {checkout} = this.context;
         try {
-            // const stripe = await this.createSource();
-            const stripe = {id: "src_1FVaizKMEauxsMPf6CS5Ap1g", cc_exp_month: 12, cc_exp_year: 2024, cc_last4: "4242", cc_brand: "Visa"};
             const attributes = $(target).serializeObject();
+            const stripe = await this.createSource(attributes);
+            // const stripe = {source: "src_1FVaizKMEauxsMPf6CS5Ap1g", cc_exp_month: 12, cc_exp_year: 2024, cc_last4: "4242", cc_brand: "Visa"};
             checkout.makeOrder({
                 type: "Stripe",
                 data: {
@@ -71,11 +73,22 @@ class CardForm extends React.Component {
         }
     };
 
-    async createSource() {
+    async createSource(attributes) {
         const { stripe } = this.props;
+        const { email, first_name, last_name, address1, city, country, zip } = attributes;
 
         const options = {
             type: "card",
+            owner: {
+                name: `${first_name} ${last_name}`,
+                address: {
+                    line1: address1,
+                    city,
+                    postal_code: zip,
+                    country,
+                },
+                email
+            }
         };
 
         try {
