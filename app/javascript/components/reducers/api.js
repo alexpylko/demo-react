@@ -19,21 +19,13 @@ function handleApiDataRequest(state, action) {
 // To handle the API success action
 
 function handleApiDataSuccess(state, action) {
-    const { dataType, response: { entries = [] } } = action;
-    const { [dataType]: dataOfType = {}, ...restOfState} = state;
-
-    // Convert the array of the entries to the object with entry ids as keys
-    const entriesObj = entries.reduce((memo, entry) => {
-        memo[entry.id] = entry;
-        return memo;
-    }, { });
+    const { endpoint, response } = action;
 
     return {
-        ...restOfState,
+        ...state,
         loading: false,
-        [dataType]: {
-            ...dataOfType,
-            ...entriesObj
+        meta: {
+            [endpoint]: response
         }
     };
 }

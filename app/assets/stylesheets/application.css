@@ -21,6 +21,17 @@
     top: 0px;
 }
 
+.Polaris-Page {
+    position: relative;
+}
+
+.Polaris-Spinner {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    z-index: 3000;
+}
+
 .Polaris-Thumbnail--sizeSmall {
     height: 26px;
 }

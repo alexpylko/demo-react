@@ -1,5 +1,5 @@
 import React from "react";
-import { Layout, Page, Card, Form } from "@shopify/polaris";
+import { Layout, Page, Card, Form, Spinner } from "@shopify/polaris";
 import PropTypes from "prop-types";
 import AddressView from "./address_view";
 import OrderList from "./order_list";
@@ -15,11 +15,19 @@ export default class CheckoutView extends React.Component {
         provider: DEFAULT_PROVIDER
     };
 
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        const { order_status_url } = this.props;
+        if(order_status_url && !prevProps.order_status_url) {
+            window.location.href = order_status_url;
+        }
+    }
+
     render() {
-        const {products, provider: CardView, ...props} = this.props;
+        const {loading, products, provider: CardView, ...props} = this.props;
 
         return (
             <Page title="Checkout">
+                {loading && <Spinner size="large" color="teal" />}
                 <Form onSubmit={e => this.onSubmit(e)}>
                     <Layout>
                         <Layout.Section>
