@@ -16,7 +16,7 @@ class CardForm extends React.Component {
 
     componentDidMount() {
         const {checkout} = this.context;
-        checkout.onSubmit = this.onSubmit;
+        // checkout.onSubmit = this.onSubmit;
     }
 
     render() {

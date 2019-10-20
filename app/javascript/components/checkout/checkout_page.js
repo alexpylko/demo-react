@@ -1,57 +1,22 @@
-import React from "react";
-import { Layout, Page, Card, Form } from "@shopify/polaris";
-import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import CheckoutView from "./checkout_view";
+import { makeOrder } from "../api/orders";
 import DefaultProvider, * as Providers from "../providers"
-import AddressView from "./address_view";
-import OrderList from "./order_list";
+import { DEFAULT_PROVIDER } from "../config";
 
-export default class CheckoutPage extends React.Component {
+const makeMapStateToProps = (state, ownProps) => {
+    const {provider = DEFAULT_PROVIDER} = ownProps;
 
-    static childContextTypes = {
-        checkout: PropTypes.object
+    return {
+        provider: Providers[provider] || DefaultProvider
     };
+};
 
-    static defaultProps = {
-        provider: "Stripe"
+const mapDispatchToProps = (dispatch) => {
+    return {
+        makeOrder: (params) => dispatch(makeOrder(params))
     };
+};
 
-    render() {
-        const {products, provider, ...props} = this.props;
-        const CardView = Providers[provider] || DefaultProvider;
 
-        return (
-            <Page title="Checkout">
-                <Form onSubmit={e => this.onSubmit(e)}>
-                    <Layout>
-                        <Layout.Section>
-                            <Card title="Shipping Details" sectioned>
-                                <AddressView />
-                            </Card>
-                        </Layout.Section>
-                        <Layout.Section secondary>
-                            <Card title="Order Summary" sectioned>
-                                <OrderList products={products} />
-                            </Card>
-                            <Card title="Payment Method" sectioned>
-                                <CardView />
-                            </Card>
-                        </Layout.Section>
-                    </Layout>
-                </Form>
-            </Page>
-        );
-    }
-
-    getChildContext = () => {
-        return {
-            checkout: this
-        };
-    };
-
-    // Callbacks
-
-    onSubmit = (e) => {
-        e.preventDefault();
-    }
-
-}
+export default connect(makeMapStateToProps, mapDispatchToProps)(CheckoutView);
