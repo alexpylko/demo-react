@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+####Step 1
+Fill the form
+![alt text](https://github.com/alexpylko/demo-react/blob/master/app/assets/images/screenshot-1.png?raw=true)
 
-Things you may want to cover:
+####Step 2
+Complete purchase
+![alt text](https://github.com/alexpylko/demo-react/blob/master/app/assets/images/screenshot-2.png?raw=true)
 
-* Ruby version
+####Step 3
+Order confirmation
+![alt text](https://github.com/alexpylko/demo-react/blob/master/app/assets/images/screenshot-3.png?raw=true)
 
-* System dependencies
+####Step 4
+The new customer has been added in Stripe
+![alt text](https://github.com/alexpylko/demo-react/blob/master/app/assets/images/screenshot-4.png?raw=true)
 
-* Configuration
+####Step 5
+Payment confirmation in Stripe
+![alt text](https://github.com/alexpylko/demo-react/blob/master/app/assets/images/screenshot-5.png?raw=true)
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+####Step 6
+Order confirmation in Shopify
+![alt text](https://github.com/alexpylko/demo-react/blob/master/app/assets/images/screenshot-6.png?raw=true)
