@@ -57,7 +57,7 @@ class CardForm extends React.Component {
         try {
             const attributes = $(target).serializeObject();
             const stripe = await this.createSource(attributes);
-            // const stripe = {source: "src_1FVaizKMEauxsMPf6CS5Ap1g", cc_exp_month: 12, cc_exp_year: 2024, cc_last4: "4242", cc_brand: "Visa"};
+            // const stripe = {source: "src_1FVj9hKMEauxsMPf3r1QHyzW", cc_exp_month: 12, cc_exp_year: 2024, cc_last4: "4242", cc_brand: "Visa"};
             checkout.makeOrder({
                 type: "Stripe",
                 data: {
