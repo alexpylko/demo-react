@@ -1,6 +1,7 @@
 import React from "react";
 import {FormLayout, TextField} from "@shopify/polaris";
 
+// The address form
 export default class AddressView extends React.Component {
 
     static defaultProps = {
@@ -10,7 +11,8 @@ export default class AddressView extends React.Component {
         address: "",
         city: "",
         zip_code: "",
-        country: ""
+        country: "",
+        phone: ""
     };
 
     constructor(props) {
@@ -21,7 +23,7 @@ export default class AddressView extends React.Component {
     }
 
     render() {
-        const { email, first_name, last_name, address, city, zip_code, country } = this.state;
+        const { email, first_name, last_name, address, city, zip_code, country, phone } = this.state;
         return (
             <FormLayout>
                 <TextField
@@ -53,6 +55,13 @@ export default class AddressView extends React.Component {
                     name="address1"
                     value={address}
                     onChange={e => this.onAddressChange(e)}
+                />
+                <TextField
+                    label="Phone"
+                    placeholder="Phone"
+                    name="phone"
+                    value={phone}
+                    onChange={e => this.onPhoneChange(e)}
                 />
                 <FormLayout.Group>
                     <TextField
@@ -95,6 +104,10 @@ export default class AddressView extends React.Component {
 
     onAddressChange = (address) => {
         this.setState({address});
+    };
+
+    onPhoneChange = (phone) => {
+        this.setState({phone});
     };
 
     onCityChange = (city) => {

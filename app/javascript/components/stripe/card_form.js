@@ -8,6 +8,7 @@ import {
     injectStripe
 } from "react-stripe-elements";
 
+// The Stripe form with the credit card elements
 class CardForm extends React.Component {
 
     static contextTypes = {
@@ -50,14 +51,18 @@ class CardForm extends React.Component {
         );
     }
 
+    // Post the order request
     onSubmit = async (e) => {
         e.preventDefault();
         const {target} = e;
         const {checkout} = this.context;
         try {
+            // Serialize all form elements into object
             const attributes = $(target).serializeObject();
             const stripe = await this.createSource(attributes);
             // const stripe = {source: "src_1FVj9hKMEauxsMPf3r1QHyzW", cc_exp_month: 12, cc_exp_year: 2024, cc_last4: "4242", cc_brand: "Visa"};
+
+            // Make an order with Stripe provider as type
             checkout.makeOrder({
                 type: "Stripe",
                 data: {
@@ -73,10 +78,13 @@ class CardForm extends React.Component {
         }
     };
 
+    // Create the Stripe source
+    // See more https://stripe.com/docs/sources/cards
     async createSource(attributes) {
         const { stripe } = this.props;
         const { email, first_name, last_name, address1, city, country, zip } = attributes;
 
+        // Options for the source request
         const options = {
             type: "card",
             owner: {
@@ -92,6 +100,7 @@ class CardForm extends React.Component {
         };
 
         try {
+            // Make the source request
             const response = await stripe.createSource(options);
             console.log("Stripe: ", response);
 

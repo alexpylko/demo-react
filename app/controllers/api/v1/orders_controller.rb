@@ -35,7 +35,7 @@ class Api::V1::OrdersController < Api::ApplicationController
   # @example_request
   #   ```json
   #   curl -H "Authorization: Token token=\"xsRUispZFsEx6ECYYLee\""
-  #     "https://localhost:3000/api/v1/orders" -d '{"data": {"attributes": {
+  #     "https://localhost:3000/api/v1/orders" -d '{"type": "Stripe",  "data": {"attributes": {
   #       "first_name": "Alexey",
   #       "last_name": "Pylko",
   #       "email": "alex@example.com",
