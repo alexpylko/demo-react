@@ -19,7 +19,11 @@ The app consist of the front-end app which communicate with server side via API 
 * Run `yarn install`
 * Run `rake db:migrate`
 * Rename .env_initial to .env and fulfill the environment variables there with your API credentials
-* Run `rails s` 
+* Run `rails s`
+
+### Remarks ###
+
+* Use Stripe cards for testing https://stripe.com/docs/testing 
 
 ### App Workflow ### 
 
