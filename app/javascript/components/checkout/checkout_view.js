@@ -32,7 +32,7 @@ export default class CheckoutView extends React.Component {
                     <Layout>
                         <Layout.Section>
                             <Card title="Shipping Details" sectioned>
-                                <AddressView />
+                                <AddressView {...props} />
                             </Card>
                         </Layout.Section>
                         <Layout.Section secondary>
@@ -40,7 +40,7 @@ export default class CheckoutView extends React.Component {
                                 <OrderList products={products} />
                             </Card>
                             <Card title="Payment Method" sectioned>
-                                <CardView />
+                                <CardView {...props} />
                             </Card>
                         </Layout.Section>
                     </Layout>

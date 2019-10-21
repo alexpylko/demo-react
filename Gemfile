@@ -20,6 +20,8 @@ gem 'webpacker'
 
 gem 'versionist'
 gem 'stripe'
+gem 'countries', require: 'countries/global'
+gem 'gon'
 
 # Shopify stuff
 gem 'shopify_app'

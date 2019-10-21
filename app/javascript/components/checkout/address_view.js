@@ -1,5 +1,5 @@
 import React from "react";
-import {FormLayout, TextField} from "@shopify/polaris";
+import {FormLayout, TextField, Select} from "@shopify/polaris";
 
 // The address form
 export default class AddressView extends React.Component {
@@ -24,6 +24,8 @@ export default class AddressView extends React.Component {
 
     render() {
         const { email, first_name, last_name, address, city, zip_code, country, phone } = this.state;
+        const { countries } = this.props;
+
         return (
             <FormLayout>
                 <TextField
@@ -79,10 +81,10 @@ export default class AddressView extends React.Component {
                         onChange={e => this.onZipCodeChange(e)}
                     />
                 </FormLayout.Group>
-                <TextField
+                <Select
                     name="country"
                     label="Country"
-                    placeholder="Country"
+                    options={countries}
                     value={country}
                     onChange={e => this.onCountryChange(e)}
                 />

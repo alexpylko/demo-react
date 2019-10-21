@@ -9,11 +9,13 @@ import { withRouter } from "react-router-dom"
 const makeMapStateToProps = (state, ownProps) => {
     const {provider = DEFAULT_PROVIDER} = ownProps;
     const {api: {loading = false, meta: {[API_ORDERS_URL]: response = {}} = {}}} = state;
+    const {countries} = window.gon;
 
     return {
         ...response,
         provider: Providers[provider] || DefaultProvider,
-        loading
+        loading,
+        countries
     };
 };
 
