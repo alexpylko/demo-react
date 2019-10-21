@@ -18,6 +18,17 @@ gem 'webpacker'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 
+gem 'versionist'
+gem 'stripe'
+gem 'countries', require: 'countries/global'
+gem 'gon'
+
+# Shopify stuff
+gem 'shopify_app'
+
+# React
+gem 'react-rails'
+
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -54,6 +65,4 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# Shopify stuff
-gem 'shopify_app'
 gem 'dotenv-rails', group: [:test, :development]

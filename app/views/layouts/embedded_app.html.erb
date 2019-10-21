@@ -4,8 +4,15 @@
     <meta charset="utf-8" />
     <% application_name = ShopifyApp.configuration.application_name %>
     <title><%= application_name %></title>
+    <%= Gon::Base.render_data %>
     <%= stylesheet_link_tag 'application' %>
     <%= javascript_include_tag 'application', "data-turbolinks-track" => true %>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        // Public Stripe publishable key
+        var STRIPE_PUBLISHABLE_KEY = "<%= ENV["STRIPE_PUBLISHABLE_KEY"] %>";
+    </script>
+    <%= javascript_pack_tag 'application' %>
     <%= csrf_meta_tags %>
   </head>
 
