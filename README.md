@@ -1,5 +1,17 @@
 # README
 
+The app consist of the front-end app which communicate with server side via API endpoint. 
+
+### Used external tools/api ###
+
+#### Front end ####
+* Shopify Polaris https://polaris.shopify.com/
+* Stripe.Js https://stripe.com/docs/stripe-js
+
+#### Backend end ####
+* Shopify API https://help.shopify.com/en/api/reference 
+* Stripe API https://stripe.com/docs/api 
+
 ### Set up ###
 
 * Clone repository
