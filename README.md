@@ -1,5 +1,16 @@
 # README
 
+### Set up ###
+
+* Clone repository
+* Run `bundle install`
+* Run `yarn install`
+* Run `rake db:migrate`
+* Rename .env_initial to .env and fulfill the environment variables there with your API credentials
+* Run `rails s` 
+
+### App Workflow ### 
+
 #### Step 1 ####
 Fill the form
 ![alt text](https://github.com/alexpylko/demo-react/blob/master/app/assets/images/screenshot-1.png?raw=true)
