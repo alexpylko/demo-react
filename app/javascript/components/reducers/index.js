@@ -3,7 +3,7 @@ import storage from "redux-persist/lib/storage";
 import api from "./api";
 
 const persistConfig = {
-    key: "deals",
+    key: "demo",
     blacklist: [ "api" ],
     storage,
     transforms: []
